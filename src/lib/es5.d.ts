@@ -1496,6 +1496,11 @@ type Extract<T, U> = T extends U ? T : never;
 type Omit<T, K extends keyof any> = Pick<T, Exclude<keyof T, K>>;
 
 /**
+ * Override and replace the properties of T with with those in type U.
+ */
+type Override<T, U> = Pick<T, Exclude<keyof T, keyof U>> & U;
+
+/**
  * Exclude null and undefined from T
  */
 type NonNullable<T> = T extends null | undefined ? never : T;
